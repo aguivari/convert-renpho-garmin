@@ -1,7 +1,7 @@
 # convert-renpho-garmin
 Convert RENPHO Scales export CSV with body measurements to GARMIN FIT
 
-## Raationale
+## Rationale
 Garmin Connect has a very strict CSV file formatting which can accept Some of the CSV exported data
 from the Renpho App.
 
@@ -63,6 +63,8 @@ The script requires 2 arguments, with a third optional:
 - CSV source filename
 - FIT destination filename
 - Optional gender (male/female), default male
+
+The generated file can then be imported to Garmin Connect.
 
 
 
