@@ -4,19 +4,24 @@ import os.path
 import sys
 from garmin_fit_sdk import Encoder, Profile
 
+print(len(sys.argv), sys.argv)
+
 if len(sys.argv) < 4: 
     print("Error: three arguments are expected, with an optional fourth (default male)")
     print("Usage: ", sys.argv[0], "<brand> <input_file.csv> <output_file.fit> [male/female]")
     print("<brand> can be eufy or renpho")
     sys.exit(1)
 
-if len(sys.argv) == 4: # gender espeficied 
+if len(sys.argv) == 5: # gender espeficied
+    print("gender specified on command line: ",end='') 
     if sys.argv[4] == 'male':
         gender='male'
     else:
         gender='female'
+    print(gender)
 else:
     gender='male'
+    print("no gender specified on command line, assuming male") 
     
 input_file = sys.argv[2]
 output_file = sys.argv[3]
