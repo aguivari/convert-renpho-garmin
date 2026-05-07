@@ -9,6 +9,9 @@ fi
 filename="$(date +%Y%m%d%H%M%S).fit"
 directory=$(dirname "$1")
 
-python ~/My\ Stuff/learning/convert-scale-garmin/convert-scale-garmin.py "$2" "$1" "$directory/$filename"  "$3"
-python ~/My\ Stuff/learning/convert-scale-garmin/uploader.py "$directory/$filename"
+real_path=$(realpath "${BASH_SOURCE[0]}")
+script_dir=$(dirname "$real_path")
+
+python "${script_dir}/convert-scale-garmin.py" "$2" "$1" "$directory/$filename"  "$3"
+python "${script_dir}/uploader.py" "$directory/$filename"
 
