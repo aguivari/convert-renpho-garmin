@@ -33,6 +33,7 @@ elif brand == "eufy":
 else:
     print(f"Unknown brand {brand}")
     exit(1)
+print(f"Loaded {brand} specific functions")
 
 if not os.path.isfile(input_file):
     print(f"Error: file {input_file} not found!")
@@ -57,6 +58,7 @@ encoder.write_mesg({
     'time_created': datetime.now(timezone.utc)
 })
 
+lines=0
 # Process CSV lines
 for _, row in df.iterrows():
     try:
@@ -74,6 +76,7 @@ for _, row in df.iterrows():
             'bmi': data['bmi'],
             'physique_rating': data['physique_rating'],
         })
+        lines=lines+1
         
     except Exception as e:
         print(f"Error processing line: {e}")
@@ -83,4 +86,5 @@ uint8_array = encoder.close()
 with open(output_file, 'wb') as f:
     f.write(uint8_array)
 
+print(f"{lines} lines processed from CSV file...")
 print(f"FIT file written as '{output_file}'")
